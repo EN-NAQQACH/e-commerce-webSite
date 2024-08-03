@@ -7,12 +7,10 @@ function MenuBig() {
                 <li>HomePage</li>
                 <li>female</li>
                 <li>male</li>
-                <li>Contat</li>
             </ul>
-            <div>
-                <input type="text" className='p-1 pl-4 rounded-3xl  outline-none' placeholder='search...' />
+            <div className='w-[250px]'>
+                <input type="text" className='p-1 pl-4 rounded-3xl w-full  outline-none' placeholder='search...' />
             </div>
-          
         </div>
     )
 }

@@ -5,7 +5,7 @@ function CategoriesList() {
   return (
     <div className=''>
       <p className='text-[20px] p-10'>Categories</p>
-      <div className='categories-container p-5 overflow-x-scroll no-scrollbar '>
+      <div className='categories-container  overflow-x-scroll no-scrollbar '>
         <div className='categories flex gap-4 '>
 
 

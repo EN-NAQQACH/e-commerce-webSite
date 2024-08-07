@@ -37,12 +37,13 @@ function Slider() {
                 {slides.map(slide => (
                     <div className={`${slide.bg} w-screen h-full flex flex-col gap-7 md:flex-row`} key={slide.id}>
                         <div className='TEXT-CONTAINER md:w-1/2 h-full flex justify-center gap-5 items-center flex-col'>
-                            <p className='md:text-[35px] text-[25px] font-bold'>{slide.description}</p>
-                            <p className='md:text-[20px]'>{slide.title}</p>
+                        <p className='md:text-[20px] lg:text-[25px]'>{slide.title}</p>
+                            <p className='md:text-[35px] lg:text-[50px] font-bold'>{slide.description}</p>
+                            
                             <button className='p-2 border bg-black text-white rounded-sm'>Shop Now</button>
                         </div>
-                        <div className='IMAGE-CONTAINER relative md:w-1/2 h-1/2  '>
-                            <img src={slide.img} alt="" sizes='100%' className='' />
+                        <div className='IMAGE-CONTAINER  md:w-1/2 h-1/2  '>
+                            <img src={slide.img} alt="" sizes='100%' className='object-cover' />
                         </div>
                     </div>
                 ))}

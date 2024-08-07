@@ -5,9 +5,9 @@ import React from 'react'
 function ListPage() {
 
   return (
-    <div className=' w-full min-h-screen py-2 px-2 sm:py-0 sm:px-0'>
-          <div className='container flex mx-auto min-w-[100%] flex-wrap gap-4 justify-center '>
-            <div className='product-content  w-[70%] sm:w-[40%] md:w-[30%]  '>
+    <div className=' w-full min-h-screen py-2 lg:px-2 md:px-5 sm:px-10 px-20 '>
+          <div className='container grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-3 min-w-[100%]  '>
+            <div className='product-content   '>
               <div>
                 <img src="/product.jpg" alt="" className='rounded-lg' />
               </div>
@@ -17,7 +17,7 @@ function ListPage() {
                 <p className='font-bold'>$45</p>
               </div>
             </div>
-            <div className='product-content  w-[70%] sm:w-[40%] md:w-[30%] '>
+            <div className='product-content  '>
               <div>
                 <img src="/product.jpg" alt="" className='rounded-lg' />
               </div>
@@ -27,7 +27,7 @@ function ListPage() {
                 <p className='font-bold'>$45</p>
               </div>
             </div>
-            <div className='product-content  w-[70%] sm:w-[40%] md:w-[30%] '>
+            <div className='product-content  '>
               <div>
                 <img src="/product.jpg" alt="" className='rounded-lg' />
               </div>
@@ -37,7 +37,7 @@ function ListPage() {
                 <p className='font-bold'>$45</p>
               </div>
             </div>
-            <div className='product-content  w-[70%] sm:w-[40%] md:w-[30%] '>
+            <div className='product-content  '>
               <div>
                 <img src="/product.jpg" alt="" className='rounded-lg' />
               </div>
@@ -47,7 +47,7 @@ function ListPage() {
                 <p className='font-bold'>$45</p>
               </div>
             </div>
-            <div className='product-content  w-[70%] sm:w-[40%] md:w-[30%] '>
+            <div className='product-content  '>
               <div>
                 <img src="/product.jpg" alt="" className='rounded-lg' />
               </div>
@@ -57,7 +57,7 @@ function ListPage() {
                 <p className='font-bold'>$45</p>
               </div>
             </div>
-            <div className='product-content  w-[70%] sm:w-[40%] md:w-[30%] '>
+            <div className='product-content  '>
               <div>
                 <img src="/product.jpg" alt="" className='rounded-lg' />
               </div>

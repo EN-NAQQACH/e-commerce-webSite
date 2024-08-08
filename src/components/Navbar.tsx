@@ -41,7 +41,7 @@ function Navbar() {
     }, []);
     return (
         <div className='Navbar'>
-            <nav className='flex text-[13px] h-[70px] items-center justify-between p-7 bg-gray-50'>
+            <nav className='flex text-[13px] h-[70px] items-center justify-between p-7 '>
                 <div className=''>
                     <b>E-commerce</b>
                 </div>
@@ -57,8 +57,25 @@ function Navbar() {
                         <CartShopping />
                     </div>
 
-                    <button className='border-1 p-2 border-gray-900'>login</button>
-                    {open ? <FaXmark className='text-2xl md:hidden' onClick={() => setOpen(prev => !prev)} /> : <IoMenuOutline className='text-2xl md:hidden' onClick={() => setOpen(prev => !prev)} />}
+                    <Link href="/login" className='border-1 py-1 px-5 bg-black text-white rounded-full'>login</Link>
+
+                    <div
+                        className='flex flex-col gap-[6.5px] md:hidden cursor-pointer'
+                        onClick={() => setOpen(prev => !prev)}
+                    >
+                        <div
+                            className={`w-6 h-[2px] bg-black rounded-2xl transition-transform duration-300 ease-in-out ${open ? 'rotate-45' : ''}`}
+                            style={{ transformOrigin: 'left' }}
+                        ></div>
+                        <div
+                            className={`w-6 h-[2px] bg-black rounded-2xl transition-opacity duration-300 ease-in-out ${open ? 'opacity-0' : ''}`}
+                        ></div>
+                        <div
+                            className={`w-6 h-[2px] bg-black rounded-2xl transition-transform duration-300 ease-in-out ${open ? '-rotate-45' : ''}`}
+                            style={{ transformOrigin: 'left' }}
+                        ></div>
+                    </div>
+
                 </div>
             </nav>
         </div>

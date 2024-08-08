@@ -8,9 +8,9 @@ function MenuBig() {
                 <li>female</li>
                 <li>male</li>
             </ul>
-            <div className='w-[250px]'>
+            {/* <div className='w-[250px]'>
                 <input type="text" className='p-1 pl-4 rounded-3xl w-full  outline-none' placeholder='search...' />
-            </div>
+            </div> */}
         </div>
     )
 }

@@ -1,80 +1,130 @@
 import React from 'react'
+import { TbShoppingBagPlus } from "react-icons/tb";
+
 
 function ProductList() {
   return (
-    <div className='p-10'>
-        <p className='text-[20px] '>Products</p>
-        <div className='products-container flex md:justify-between justify-center lg:px-24 py-6  gap-7 flex-wrap  '>
-            <div className='product-content sm:w-[45%] lg:w-[22%] h-fit flex flex-col gap-2'>
-                <div className='h-[250px] relative'>
-                    <img src="./product.jpg" alt="" className='w-full h-full absolute z-10 hover:opacity-0 transition-all duration-500 rounded-md object-cover' />
-                    <img src="./product1.jpg" alt="" className='w-full h-full absolute  rounded-md object-cover' />
-                </div>
-                <div className='flex flex-col gap-2'>
-                    <div className='font-bold text-[14px] te flex justify-between'>
-                        <p>Digital Incense</p>
-                        <p>45$</p>
-                    </div>
-                    <div className='descritpion text-[11px] text-gray-500'>
-                        <p>Perfect mint green, organic material</p>
-                    </div>
-                    <div className='text-[12px]'>
-                        <button className='pl-5 pt-1 pb-1 pr-5 rounded-full border-black  border hover:bg-black hover:text-white'>Add to cart</button>
-                    </div>
-                </div>
+    <div className='lg:px-20 md:px-3 mt-32'>
+      <div className='text-center'>
+        <p className='text-[35px] font-semibold '>NEW COLLECTION</p>
+        <p className='text-[12px] font-[400] text-gray-500'>Our latest collection where classic and contemporary styles converge in perfect hermany </p>
+      </div>
+
+
+      <div className=' w-full min-h-screen py-2 lg:px-2 md:px-5 sm:px-10 px-20  mt-3'>
+        <div className='container grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-3 min-w-[100%]  '>
+          <div className='product-content   '>
+            <div className='relative'>
+              <div className='h-[400px]'>
+                <img src="https://www.mrporter.com/variants/images/1647597343941045/in/w560_q60.jpg" alt="" className='rounded-sm h-full object-cover w-full' />
+              </div>
+              <div className='absolute bg-[#ffffff4d] flex justify-center items-center transition-all duration-300 w-full h-full bottom-0 opacity-0 hover:opacity-100 text-white px-2 py-1 rounded-lg'>
+
+                <button className='px-5 py-1 border border-black bg-white text-black'>Add to Cart</button>
+
+              </div>
             </div>
-            <div className='product-content sm:w-[45%] lg:w-[22%] h-fit flex flex-col gap-2'>
-                <div className='h-[250px]'>
-                    <img src="./product.jpg" alt="" className='w-full h-full rounded-md object-cover' />
-                </div>
-                <div className='flex flex-col gap-2'>
-                    <div className='font-bold text-[14px] te flex justify-between'>
-                        <p>Digital Incense</p>
-                        <p>45$</p>
-                    </div>
-                    <div className='descritpion text-[11px] text-gray-500'>
-                        <p>Perfect mint green, organic material</p>
-                    </div>
-                    <div className='text-[12px]'>
-                        <button className='pl-3 pt-1 pb-1 pr-3 rounded-full border-black  border hover:bg-black hover:text-white'>Add to cart</button>
-                    </div>
-                </div>
+
+            <div className='mt-2 flex flex-col gap-1'>
+              <p className='font-bold'>Loro piano</p>
+              <p className='text-[12px] text-gray-400'>Slim short this is nice shirt for you</p>
+              <p className='font-bold'>$45</p>
             </div>
-            <div className='product-content sm:w-[45%] lg:w-[22%] h-fit flex flex-col gap-2'>
-                <div className='h-[250px]'>
-                    <img src="./product.jpg" alt="" className='w-full h-full rounded-md object-cover' />
-                </div>
-                <div className='flex flex-col gap-2'>
-                    <div className='font-bold text-[14px] te flex justify-between'>
-                        <p>Digital Incense</p>
-                        <p>45$</p>
-                    </div>
-                    <div className='descritpion text-[11px] text-gray-500'>
-                        <p>Perfect mint green, organic material</p>
-                    </div>
-                    <div className='text-[12px]'>
-                        <button className='pl-3 pt-1 pb-1 pr-3 rounded-full border-black  border hover:bg-black hover:text-white'>Add to cart</button>
-                    </div>
-                </div>
+          </div><div className='product-content   '>
+            <div className='relative'>
+              <div className='h-[400px]'>
+                <img src="https://moib5afm.cdn.imgeng.in/media/catalog/product/cache/9e37c6e3a782ef2d0019bcd6c30e6ef0/image/3371680a18/cropped-nuptse.jpg" alt="" className='rounded-sm h-full object-cover w-full' />
+              </div>
+              <div className='absolute bg-[#ffffff4d] flex justify-center items-center transition-all duration-300 w-full h-full bottom-0 opacity-0 hover:opacity-100 text-white px-2 py-1 rounded-lg'>
+
+                <button className='px-5 py-1 border border-black bg-white text-black'>Add to Cart</button>
+
+              </div>
             </div>
-            <div className='product-content sm:w-[45%] lg:w-[22%] h-fit flex flex-col gap-2'>
-                <div className='h-[250px]'>
-                    <img src="./product.jpg" alt="" className='w-full h-full rounded-md object-cover' />
-                </div>
-                <div className='flex flex-col gap-2'>
-                    <div className='font-bold text-[14px] flex justify-between'>
-                        <p>Digital Incense</p>
-                        <p>45$</p>
-                    </div>
-                    <div className='descritpion text-[11px] text-gray-500'>
-                        <p>Perfect mint green, organic material</p>
-                    </div>
-                    <div className='text-[12px]'>
-                        <button className='pl-3 pt-1 pb-1 pr-3 rounded-full border-black  border hover:bg-black hover:text-white'>Add to cart</button>
-                    </div>
-                </div>
+
+            <div className='mt-2 flex flex-col gap-1'>
+              <p className='font-bold'>Loro piano</p>
+              <p className='text-[12px] text-gray-400'>Slim short this is nice shirt for you</p>
+              <p className='font-bold'>$45</p>
             </div>
+          </div>
+          <div className='product-content   '>
+            <div className='relative'>
+              <div className='h-[400px]'>
+                <img src="https://www.mrporter.com/variants/images/1647597330121164/in/w560_q60.jpg" alt="" className='rounded-sm object-cover w-full h-full' />
+              </div>
+              <div className='absolute bg-[#ffffff4d] flex justify-center items-center transition-all duration-300 w-full h-full bottom-0 opacity-0 hover:opacity-100 text-white px-2 py-1 rounded-lg'>
+
+                <button className='px-5 py-1 border border-black bg-white text-black'>Add to Cart</button>
+
+              </div>
+            </div>
+
+            <div className='mt-2 flex flex-col gap-1'>
+              <p className='font-bold'>Loro piano</p>
+              <p className='text-[12px] text-gray-400'>Slim short this is nice shirt for you</p>
+              <p className='font-bold'>$45</p>
+            </div>
+          </div>
+          <div className='product-content   '>
+            <div className='relative'>
+              <div className='h-[400px]'>
+                <img src="https://www.mrporter.com/variants/images/1647597330121164/in/w560_q60.jpg" alt="" className='rounded-sm object-cover w-full h-full' />
+              </div>
+              <div className='absolute bg-[#ffffff4d] flex justify-center items-center transition-all duration-300 w-full h-full bottom-0 opacity-0 hover:opacity-100 text-white px-2 py-1 rounded-lg'>
+
+                <button className='px-5 py-1 border border-black bg-white text-black'>Add to Cart</button>
+
+              </div>
+            </div>
+
+            <div className='mt-2 flex flex-col gap-1'>
+              <p className='font-bold'>Loro piano</p>
+              <p className='text-[12px] text-gray-400'>Slim short this is nice shirt for you</p>
+              <p className='font-bold'>$45</p>
+            </div>
+          </div>
+          <div className='product-content   '>
+            <div className='relative'>
+              <div className='h-[400px]'>
+                <img src="https://www.mrporter.com/variants/images/1647597330121164/in/w560_q60.jpg" alt="" className='rounded-sm object-cover w-full h-full' />
+              </div>
+              <div className='absolute bg-[#ffffff4d] flex justify-center items-center transition-all duration-300 w-full h-full bottom-0 opacity-0 hover:opacity-100 text-white px-2 py-1 rounded-lg'>
+
+                <button className='px-5 py-1 border border-black bg-white text-black'>Add to Cart</button>
+
+              </div>
+            </div>
+
+            <div className='mt-2 flex flex-col gap-1'>
+              <p className='font-bold'>Loro piano</p>
+              <p className='text-[12px] text-gray-400'>Slim short this is nice shirt for you</p>
+              <p className='font-bold'>$45</p>
+            </div>
+          </div>
+          <div className='product-content   '>
+            <div className='relative'>
+              <div className='h-[400px]'>
+                <img src="https://www.mrporter.com/variants/images/1647597330121164/in/w560_q60.jpg" alt="" className='rounded-sm object-cover w-full h-full' />
+              </div>
+              <div className='absolute bg-[#ffffff4d] flex justify-center items-center transition-all duration-300 w-full h-full bottom-0 opacity-0 hover:opacity-100 text-white px-2 py-1 rounded-lg'>
+
+                <button className='px-5 py-1 border border-black bg-white text-black'>Add to Cart</button>
+
+              </div>
+            </div>
+
+            <div className='mt-2 flex flex-col gap-1'>
+              <p className='font-bold'>Loro piano</p>
+              <p className='text-[12px] text-gray-400'>Slim short this is nice shirt for you</p>
+              <p className='font-bold'>$45</p>
+            </div>
+          </div>
         </div>
+      </div>
+      <div className='w-full flex justify-center mt-6'>
+        <button className='px-5 py-1 bg-black text-white rounded-3xl '>See more</button>
+      </div>
     </div>
   )
 }

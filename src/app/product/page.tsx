@@ -4,17 +4,19 @@ import Details_Reviews from '@/components/Details_Reviews';
 import Accordion from '@/components/Accordion';
 import ProductImages from '@/components/ProductImages';
 import { wixClientServer } from '@/lib/wixClientServer';
+import Description from '@/components/Description';
+import CustomizeProduct from '@/components/CustomizeProduct';
 
 
-
-const page = async({searchParams} : {searchParams :any}) => {
+const page = async ({ searchParams }: { searchParams: any }) => {
     const wixClient = await wixClientServer();
     const res = await wixClient.products.queryProducts().eq(
         '_id', searchParams.id
-    ).find(); 
+    ).find();
+    const categorie = await wixClient.collections.queryCollections().eq(
+        "_id", res.items[0].collectionIds
+    ).find();
     const product = res.items[0];
-    console.log(product);
-
     return (
         <div className='min-h-screen w-full md:px-24 px-10 py-5'>
             <div className='product-container '>
@@ -47,10 +49,10 @@ const page = async({searchParams} : {searchParams :any}) => {
                             <div className=' flex flex-col gap-3'>
                                 <div className=''>
                                     <div className='CATEGORIE'>
-                                        <p className='border font-bold border-gray-700 text-gray-700 w-fit px-6 py-1 rounded-full'>Categorie Sofa</p>
+                                        <p className='border font-bold border-gray-700 text-gray-700 w-fit px-6 py-1 rounded-full'>Categorie</p>
                                     </div>
                                     <div className=''>
-                                        <p className='TITLE text-[35px] font-[500]'>Axis 2-Seat Sofa</p>
+                                        <p className='TITLE text-[35px] font-[500]'>{product.name}</p>
                                     </div>
                                     <div className='flex items-center gap-2 font-semibold text-[13px] text-gray-400'>
                                         <GoStarFill />
@@ -58,50 +60,22 @@ const page = async({searchParams} : {searchParams :any}) => {
                                     </div>
                                 </div>
                                 <div className=' flex items-center gap-3'>
-                                    <p className='font-[400] text-gray-500 text-[25px] line-through'>$645</p>
-                                    <p className='font-[400] text-[32px]'>$645</p>
+                                    {product.price?.discountedPrice === product.price?.price ? <>
+                                        <p className='text-[32px] font-bold'><span className='text-[35px]'>$</span>{product.price?.price}</p>
+                                    </> : <>
+                                        <p className='font-[400] text-gray-500 text-[25px] line-through'>${product.price?.discountedPrice}</p>
+                                        <p className='font-[400] text-[32px]'>${product.price?.price}</p>
+                                    </>
+                                    }
+
                                 </div>
                                 <div className='DESCRIPTION flex flex-col gap-2'>
                                     <p className='text-[17px] font-[520]'>Description</p>
-                                    <p className='text-justify text-[13px] leading-5 font-[550] text-gray-500'>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia eos pariatur iste architecto, odio beatae libero animi a corrupti dolores earum ad aspernatur atque et illo commodi aut explicabo! Voluptatem!
-                                    </p>
+                                    <Description description={product.description} />
                                 </div>
-                                <div className='COLORS flex flex-col gap-2'>
-                                    <p>3 Color Available</p>
-                                    <div className='flex gap-3 items-center'>
-                                        <button className='p-2 rounded-full relative w-5 h-5  bg-amber-800'>
-                                            <div className='absolute w-6 h-6 ring-2 ring-amber-800 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2' />
-                                        </button>
-                                        <button className='p-2 rounded-full relative w-5 h-5  bg-teal-600'>
-                                            <div className='absolute w-6 h-6 ring-2 ring-teal-600 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2' />
-                                        </button>
-                                        <button className='p-2 rounded-full relative w-5 h-5  bg-gray-500'>
-                                            <div className='absolute w-6 h-6 ring-2 ring-gray-500 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2' />
-                                        </button>
-                                    </div>
-                                </div>
-                                <div className='SIZE flex flex-col gap-2'>
-                                    <p>Size</p>
-                                    <div className='flex gap-2 items-center'>
-                                        <button className='px-5 py-1 rounded-md border'>S</button>
-                                        <button className='px-5 py-1 rounded-md border'>M</button>
-                                        <button className='px-5 py-1 rounded-md border'>L</button>
-                                        <button className='px-5 py-1 rounded-md border'>XL</button>
-                                    </div>
-                                </div>
-                                <div className='QUANTITY flex flex-col gap-2'>
-                                    <p>Quantity</p>
-                                    <div className='flex gap-2 items-center'>
-                                        <button className='px-3 py-1 rounded-full border'>-</button>
-                                        <button className='px-5 py-1 rounded-full border'>1</button>
-                                        <button className='px-3 py-1 rounded-full border'>+</button>
-                                    </div>
-                                </div>
-                                <div className='ADD-TO-CART flex items-center gap-3 mt-2'>
-                                    <button className='px-5 py-[7px] w-full  border bg-black text-white'>Buy now</button>
-                                    <button className='px-5 py-[7px] w-full  border'>Add to Cart</button>
-                                </div>
+                                
+                                <CustomizeProduct variants={product.variants} productId={product._id} productOptions={product.productOptions} />
+
                                 <div className='PRODUCT-INFORMATIONS'>
                                     <Accordion />
                                 </div>

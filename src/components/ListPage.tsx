@@ -1,27 +1,33 @@
 import React from 'react'
 import { wixClientServer } from "@/lib/wixClientServer";
 import DOMPurify from 'isomorphic-dompurify';
+import Pagination from '@/components/Pagination';
 
 const ListPage = async ({ searchParams, categorieId }: { searchParams: any, categorieId: any }) => {
   const wixClient = await wixClientServer();
+  const itemPerPage = 9;
+  const page = parseInt(searchParams.page) || 1;
   const Query = wixClient.products.queryProducts().eq(
     "collectionIds", categorieId
-  )
-    .startsWith("name", searchParams?.search || "")
-    .ge("priceData.price", searchParams.minprice || 0)
-    .le("priceData.price", searchParams.maxprice || 99999)
-    .limit(9)
+  ).startsWith("name", searchParams?.search || "")
+  .ge("priceData.price", searchParams.minprice || 0)
+  .le("priceData.price", searchParams.maxprice || 99999)
+  .limit(itemPerPage)
+  .skip((page - 1) * itemPerPage)
+    
 
-  if(searchParams?.sortby){
+  if (searchParams?.sortby) {
     const [sortType, sort] = searchParams.sortby.split(" ");
-    if(sortType === "asc"){
+    if (sortType === "asc") {
       Query.ascending(sort)
     }
-    if(sortType === "desc"){
+    if (sortType === "desc") {
       Query.descending(sort)
     }
   }
   const res = await Query.find();
+  const totalItems = res.totalCount;
+  const totalPages = Math.ceil(totalItems! / itemPerPage);
   return (
     <div className=' w-full min-h-screen py-2 lg:px-2 md:px-5 sm:px-10 px-20  mt-3'>
       <div className='container grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-3 min-w-[100%]  '>
@@ -39,20 +45,21 @@ const ListPage = async ({ searchParams, categorieId }: { searchParams: any, cate
               </div>
             </div>
             <div className='mt-2 flex flex-col gap-1'>
-                <p className='font-bold overflow-hidden text-ellipsis whitespace-nowrap'>
-                  {item.name}
-                </p>              
-                <div className='text-[12px] text-gray-400 h-[25px] overflow-hidden text-ellipsis whitespace-nowrap'
-                  dangerouslySetInnerHTML={{
-                    __html: DOMPurify.sanitize(item.additionalInfoSections?.find((section:any) => section.title ="shortDescription")?.description || ""),
-                  }}
-                >
-                </div>
-                <p className='font-bold'>${item.price?.price}</p>
+              <p className='font-bold overflow-hidden text-ellipsis whitespace-nowrap'>
+                {item.name}
+              </p>
+              <div className='text-[12px] text-gray-400 h-[25px] overflow-hidden text-ellipsis whitespace-nowrap'
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(item.additionalInfoSections?.find((section: any) => section.title = "shortDescription")?.description || ""),
+                }}
+              >
               </div>
+              <p className='font-bold'>${item.price?.price}</p>
+            </div>
           </div>
         ))}
       </div>
+     <Pagination totalPages={totalPages} page={page} />
     </div>
   )
 }

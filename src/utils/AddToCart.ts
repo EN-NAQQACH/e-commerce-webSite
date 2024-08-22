@@ -1,31 +1,43 @@
 import { wixClients } from "@/lib/wixClients";
 
 interface AddToCartOption {
-  product_id: string;
-  variant_id?: string;
+  productID: string;
+  variantID?: string;
   quantity: number;
 }
 
-export const AddToCart = async (option: AddToCartOption) => {
-    console.log(option)
+export const AddToCart = async ({productID,variantID,quantity}: AddToCartOption) => {
   const wixClient = await wixClients();
-
-  // Properly format the catalogReference object
-  const lineItem = {
-    catalogReference: {
-      appId: process.env.NEXT_PUBLIC_WIX_STORE,
-      catalogItemId: option.product_id,
-      options: option.variant_id ? [{ variantId: option.variant_id }] : [],
-    },
-    quantity: option.quantity,
+  let response;
+  let data = {
+    lineItems: [
+      {
+        catalogReference: {
+          appId: "215238eb-22a5-4c36-9e7b-e7c08025e04e",
+          catalogItemId: productID,
+          options: {
+            variantId: variantID,
+          },
+        },
+        quantity: quantity,
+      },
+    ],
   };
-
   try {
-    // Make the request to add the item to the cart
-    await wixClient.currentCart.addToCurrentCart({
-      lineItems: [lineItem],
-    });
+     response = await wixClient.currentCart.addToCurrentCart(data);
   } catch (error) {
-    console.error("Add to cart error:", error);
+    console.error("Error adding to cart:",error);
   }
+  return response ;
+
+};
+export const getcurrentCart = async () => {
+  const wixClient = await wixClients();
+  let response;
+  try {
+    response = await wixClient.currentCart.getCurrentCart();
+  } catch (error) {
+    console.error("Error getting cart:", error);
+  }
+  return response;
 };

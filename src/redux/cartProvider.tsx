@@ -7,7 +7,7 @@ import store, { persistor } from '@/redux/cartStore';  // Adjust the path accord
 function Providers({ children }: { children: React.ReactNode }) {
   return (
     <Provider store={store}>
-      <PersistGate loading={"loading..."} persistor={persistor}>
+      <PersistGate  persistor={persistor}>
         {children}
       </PersistGate>
     </Provider>

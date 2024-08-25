@@ -33,24 +33,20 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     // In this case, PayloadAction<LineItem> means that the action has a payload of type LineItem.
-    addToCart: (state, action: PayloadAction<any>) => {
+    addToCart: (state, action: PayloadAction<currentCart.Cart>) => {
       state.isLoading = true;
-      const lineItem = action.payload;
+      const cart = action.payload;
       // Simulate adding to cart logic
       if (state.cart) {
-        state.cart.lineItems!.push(lineItem);
-        state.subtotal += parseFloat(lineItem.price.amount);
+        state.cart = cart;
       } else {
-        state.cart = {
-          lineItems: [lineItem],
-          // Add other properties as needed
-        };
+        state.cart = null
       }
-      state.counter = state.cart.lineItems!.length;
+      state.counter = state.cart!.lineItems!.length;
       state.isLoading = false;
 
     },
-    
+
     getCart: (state, action: PayloadAction<currentCart.Cart | null>) => {
       if (action.payload === null) {
         state.cart = { lineItems: [] }; // Set cart to an empty array
@@ -61,18 +57,28 @@ export const cartSlice = createSlice({
       }
       state.isLoading = false;
     },
-    
-  
+    removeItemFromCart: (state, action: PayloadAction<currentCart.Cart | null>) => {
+      if (action.payload === null) {
+        state.cart = { lineItems: [] }; // Set cart to an empty array
+        state.counter = 0;
+      } else {
+        state.cart = action.payload;
+        state.counter = action.payload.lineItems?.length || 0;
+      }
+      state.isLoading = false;
+    }
+
+
   },
 });
 
-export const { addToCart,getCart } = cartSlice.actions;
+export const { addToCart, getCart,removeItemFromCart } = cartSlice.actions;
 export default cartSlice.reducer;
 
 // The name of the action creator is the same as the reducer name.
 // The action type is automatically generated as 'sliceName/reducerName' for exaple cart/addToCart
 // Dispatching addToCart(...) triggers the addToCart reducer.
-// ya3ni kola action katginira bsmya dyal reducer dyalha 
+// ya3ni kola action katginira bsmya dyal reducer dyalha
 // o mnin kandir dispatch laction "addToCart" katmchii katksed reducer addToCart
 // o l action katkon bhal haka addToCart(somePayload) ya3ni katkon haza m3aha payload
 
